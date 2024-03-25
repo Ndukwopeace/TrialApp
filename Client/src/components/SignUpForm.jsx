@@ -13,12 +13,12 @@ const SignUpForm = (props) => {
         <div>
             <div style={{
                 display: "flex",
-                // border: "1px solid black",
+                // border: "1px solid white",
                 justifyContent: "center"
             }}>
 
                 <div style={{
-                    // border: "1px solid black",
+                    // border: "1px solid white",
                     width: "20rem",
                     display: "flex",
                     flexDirection: "column",

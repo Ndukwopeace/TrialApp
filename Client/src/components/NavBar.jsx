@@ -14,7 +14,7 @@ const NavBar = (props) => {
     const navigate = useNavigate()
   return (
     <>
-    <Box  sx={{marginBottom:"5rem"}}>
+    <Box>
       <AppBar position="static" sx={{  backgroundColor: "transparent" }}>
         <Toolbar>
           <IconButton

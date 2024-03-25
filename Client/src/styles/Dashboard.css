@@ -1,0 +1,92 @@
+*{
+    border: 1px solid black
+}
+
+/* body{
+    height: 100vh;
+    border: 1px solid black
+
+} */
+.mainDashBoardDiv{
+    flex: 1;
+    display: grid;
+    grid-template-columns: 8% 27% 65%;
+}
+
+.settingsDiv , .profileSettingsDiv,.dashBoardIcons , .chatHeader, .chatsDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.settingsDiv{
+    justify-content: space-between;
+    padding : 1rem;
+
+}
+
+.dashBoardIcons{
+    height: 30%;
+    justify-content: space-evenly;
+    /* font-size: 30rem; */
+}
+
+.profileSettingsDiv{
+    height: 10rem;
+    gap: 1rem;
+    justify-content: space-between;
+
+}
+
+.pointer:hover{
+    cursor: pointer;
+}
+
+/* ChatsDiv ==============================> */
+
+.chatsDiv{
+    padding: 1.5rem;
+    gap: 1.5rem;
+}
+
+.chatHeader{
+    gap: 1rem;
+    width: 100%;
+    font-size: 1.5rem;
+}
+.chatHeader>h3{
+    align-self: start;
+}
+
+.chatForm{
+    width: 100%;
+}
+.chatForm>OutlinedInput{
+        border: none ;
+        outline: none;     
+}
+
+.chatForm>Button{
+        border: none   
+}
+/* Conversation =============================> */
+.conversation{
+    width: 100%;
+}
+.conversationContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    height:4rem;
+}
+.profilePic , .userInfoConversation{
+    display:flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    
+}
+.userInfoConversation{
+    height: 100%;
+    flex-direction: column;
+}

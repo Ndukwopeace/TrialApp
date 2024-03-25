@@ -9,12 +9,18 @@ import {useNavigate} from 'react-router-dom'
 
 const HomePage = () => {
     const [isHomePage, setIsHomePage] = useState(true);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
    
 
     return (
-        <div style={{backgroundColor: "rgb(17, 28, 90)" , height: "100%" , color: "white"}}>
+        <div style={{
+            backgroundColor: "rgb(17, 28, 90)" ,
+            height: "100vh" ,
+            color: "white",
+            display: "flex",
+            flexDirection: "column"
+              }}>
 
 
             <NavBar setIsHomePage={setIsHomePage} isHomePage={isHomePage}/>
@@ -24,9 +30,12 @@ const HomePage = () => {
             } */}
 
             <section style={{
-                // border:"1px solid black",
+                flexGrow: "1",  
+                // border:"1px solid white",
                 display:"grid",
                 gridTemplateColumns : "50% 50%",
+                alignContent : "center",
+                justifyContent : "center",
                 padding: "3rem 0"
             }}>
                 <div style={{

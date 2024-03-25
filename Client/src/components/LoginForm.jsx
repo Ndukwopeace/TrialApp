@@ -30,7 +30,7 @@ const LoginForm = (props) => {
           </Grid>
 
           <Grid item xs={8}>
-            <Link onClick={()=>setIsRegisterPage(true)}><span>Dont't have an acoount ? Sign up</span></Link>
+            <Link onClick={()=>setIsRegisterPage(true)}><span>Don't have an account ? Sign up</span></Link>
           </Grid>
           <Grid item xs={4}>
             <Button variant="outlined" color="primary" >

@@ -39,7 +39,8 @@ const DashBoard = () => {
     <div style={{
       display:"flex",
       flexDirection:"column",
-      height: "100vh",
+      height: "95vh",
+      padding:"0 1rem 1rem 1rem",
       }}>
         <h1 style={{
           padding:"0.5rem"

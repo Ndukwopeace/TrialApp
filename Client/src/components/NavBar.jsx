@@ -38,7 +38,6 @@ const NavBar = (props) => {
           :
           <Button color="inherit" onClick={()=> navigate('/')}>Home</Button>
         }
-
         </Toolbar>
       </AppBar>
     </Box>

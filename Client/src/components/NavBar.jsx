@@ -8,12 +8,14 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Whatshot from '@mui/icons-material/Whatshot';
 import {useNavigate} from 'react-router-dom'
-const NavBar = () => {
+
+const NavBar = (props) => {
+  const {setIsHomePage , isHomePage} = props;
     const navigate = useNavigate()
   return (
     <>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box  sx={{marginBottom:"5rem"}}>
+      <AppBar position="static" sx={{  backgroundColor: "transparent" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -28,8 +30,14 @@ const NavBar = () => {
           <Whatshot color='red'/> MyCHaT <Whatshot/>
           </Typography>
           
-          <Button color="inherit">Login</Button>
-          <Button color="inherit" onClick={()=> navigate('/register')}>Register</Button>
+          {/* <Button color="inherit">Login</Button> */}
+          { isHomePage? <Button color="inherit" onClick={()=> {
+            navigate('/oauth')
+            setIsHomePage(false);
+          }}>Login</Button>
+          :
+          <Button color="inherit" onClick={()=> navigate('/')}>Home</Button>
+        }
 
         </Toolbar>
       </AppBar>

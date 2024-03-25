@@ -7,8 +7,8 @@ import DashBoard from './pages/DashBoard'
 function App() {
   return (
     <div>
-      {/* <Outlet /> */}
-      <DashBoard/>
+      <Outlet />
+      {/* <DashBoard/> */}
     </div>
   )
 }

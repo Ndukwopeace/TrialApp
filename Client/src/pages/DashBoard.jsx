@@ -41,9 +41,12 @@ const DashBoard = () => {
       flexDirection:"column",
       height: "95vh",
       padding:"0 1rem 1rem 1rem",
+      backgroundColor: "rgb(243, 243, 243)"
+
       }}>
         <h1 style={{
-          padding:"0.5rem"
+          padding:"0.5rem",
+          alignSelf:"start"
         }}>
         My Dashboard  
         </h1>

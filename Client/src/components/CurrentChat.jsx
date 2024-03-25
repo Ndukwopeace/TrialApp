@@ -31,7 +31,7 @@ const CurrentChat = () => {
   
     return (
       <Box>
-        <AppBar position="static">
+        <AppBar position="static" sx={{background:"rgb(252, 252, 252)"}}>
           <Toolbar>
           <IconButton
                   size="large"

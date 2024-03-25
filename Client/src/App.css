@@ -9,4 +9,6 @@
   text-align: center;
   /* background-color: rgb(17, 28, 90); */
 }
-
+::-webkit-scrollbar{
+  display : none ;
+}

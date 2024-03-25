@@ -4,17 +4,27 @@ import Typography from '@mui/material/Typography';
 import Whatshot from '@mui/icons-material/Whatshot';
 import { LocalCafe } from '@mui/icons-material';
 import NavBar from './NavBar';
-import {Link} from 'react-router-dom';
+import {Link , useNavigate} from 'react-router-dom';
 
 const LoginForm = (props) => {
   const {setIsRegisterPage} = props;
+  const navigate = useNavigate();
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    console.log("hey there")
+    navigate('/dashboard');
+  }
   return (
     <div style={{
       display:"flex",
       justifyContent: "center"
       }}>
       
-        <form style={{ width: "25rem", padding: "1rem", borderRadius: "1rem", boxShadow: "0 0 1px", display: "flex", justifyContent: "center", background: "white", color: "black", }}>
+        <form  onSubmit={handleSubmit} style={{ 
+          width: "25rem", padding: "1rem",
+          borderRadius: "1rem", boxShadow: "0 0 1px", 
+          display: "flex", justifyContent: "center",
+           background: "white", color: "black", }}>
 
         <Grid container spacing={2} style={{ width: "90%", paddingTop: "1rem" }} >
 
@@ -33,7 +43,7 @@ const LoginForm = (props) => {
             <Link onClick={()=>setIsRegisterPage(true)}><span>Don't have an account ? Sign up</span></Link>
           </Grid>
           <Grid item xs={4}>
-            <Button variant="outlined" color="primary" >
+            <Button type="submit" variant="outlined" color="primary" >
               Login
             </Button>
           </Grid>

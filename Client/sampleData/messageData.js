@@ -8,6 +8,20 @@ export const MessageData = [
     { id: "other" ,message: "it's been a while i saw you bro" ,recieved : false},
     { id: "me" , message: "sorry to here that" ,recieved : true},
     { id: "me" , message: "yea bro , it's been a while" ,recieved : true},
+    { id: "me" , message: "yea bro , it's been a while" ,recieved : true},
+    { id: "me" , message: "yea bro , it's been a while" ,recieved : true},
+    { id: "me" , message: "yea bro , it's been a while" ,recieved : true},
+    { id: "me" , message: "yea bro , it's been a while" ,recieved : true},
+    { id: "other" ,message: "How is every one ??" ,recieved : false},
+    { id: "other" ,message: "No bro , been unwell for a while now " ,recieved : false},
+    { id: "other" ,message: "No bro , been unwell for a while now " ,recieved : false},
+    { id: "other" ,message: "No bro , been unwell for a while now " ,recieved : false},
+    { id: "other" ,message: "No bro , been unwell for a while now " ,recieved : false},
+    { id: "other" ,message: "No bro , been unwell for a while now " ,recieved : false},
+    { id: "other" ,message: "No bro , been unwell for a while now " ,recieved : false},
+    { id: "other" ,message: "No bro , been unwell for a while now " ,recieved : false},
+
+
 
 
     

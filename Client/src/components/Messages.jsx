@@ -26,9 +26,9 @@ const Messages = () => {
         <div>
         <form className='chatForm'>
    
-          <Box sx={{display:"flex" , height:"3rem" , background:"rgb(252, 252, 252)"}}>
-            <OutlinedInput placeholder='Search or start a new Chat..' fullWidth/>
-            <Button  endIcon = {<SendIcon/>} ></Button>
+          <Box sx={{display:"flex" ,borderRadius:"1rem" , height:"3rem" , background:"rgb(252, 252, 252)"}}>
+            <OutlinedInput placeholder='Send a message.....' fullWidth className="input" />
+            <Button  endIcon = {<SendIcon fontSize='larger'/>} className='button' ></Button>
           </Box>
 
         </form>

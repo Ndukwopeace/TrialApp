@@ -39,7 +39,7 @@ const DashBoard = () => {
     <div style={{
       display:"flex",
       flexDirection:"column",
-      height: "95vh",
+      height: "100vh",
       padding:"0 1rem 1rem 1rem",
       backgroundColor: "rgb(243, 243, 243)"
 
@@ -63,8 +63,7 @@ const DashBoard = () => {
               className='pointer'/>
               
               <Box sx={{ flexGrow: 0 }}>
-                
-                
+
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import SendIcon from '@mui/icons-material/Send';
 import { MessageData } from '../../sampleData/messageData';
 const Messages = () => {
-    
+  
   return (
     <div className='messages'>
         <div className='message'>

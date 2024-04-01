@@ -7,9 +7,9 @@ const Conversation = (props) => {
     <div className='conversation'>
 
         {
-            users.map((user)=>{
+            users.map((user , index)=>{
                 return(
-                    <div className='conversationContainer'>
+                    <div className='conversationContainer' key={index}>
                         <div className='profilePic'>
                             <Avatar alt={user.userName} src="
                             "   />

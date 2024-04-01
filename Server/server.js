@@ -21,4 +21,6 @@ app.use('/oAuth', authRoute);
 
 
 
+// socket.io 
+
 app.listen(port , ()=> console.log('listening on port', port));

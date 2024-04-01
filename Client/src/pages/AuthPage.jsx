@@ -10,6 +10,7 @@ import LoginForm from '../components/LoginForm';
 
 const AuthPage = () => {
     const [isRegisterPage , setIsRegisterPage] = useState(true);
+    
   return (
 
     <div style={{backgroundColor: "rgb(17, 28, 90)" , height: "100vh" , color: "white", display:"flex", flexDirection:"column"}}>

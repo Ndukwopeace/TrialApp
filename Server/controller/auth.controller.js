@@ -87,6 +87,7 @@ module.exports = {
     },
     findUser: (req, res ) => {
         // console.log("logged in user is ", userId)
+        console.log("======================user Id is=================================== "  + req.userId);
         User.findById(req.userId)
             .then(user => {
                 console.log(res.json(user));

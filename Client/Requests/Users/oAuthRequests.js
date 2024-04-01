@@ -4,7 +4,8 @@ const API = axios.create({baseURL: Base_Url})
 const oAuthRequests = {
     registerUser : (user)=>API.post("/register", user , {withCredentials: true}),
     loginUser : (loginUser) => API.post("/login", loginUser , {withCredentials : true}),
-
+    getAllUsers : () => API.get("/users", {withCredentials: true}),
+    getUser : ()=>  API.get("/user", {withCredentials: true})
 }
 
 export default  oAuthRequests;

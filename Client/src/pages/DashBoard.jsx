@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../styles/Dashboard.css"
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -21,10 +21,36 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import oAuthRequests from '../../Requests/Users/oAuthRequests';
 
 
 const settings = ['Profile', 'Logout'];
 const DashBoard = () => {
+
+  const [users , setUsers] = useState({});
+  const [user , setUser] = useState({});
+  
+  useEffect(()=>{
+      oAuthRequests.getAllUsers().then(res=> {
+        console.log(res.data);
+        setUsers(res.data);
+      }).catch(err=> console.log(err))
+
+  }, [])
+
+  useEffect(()=>{
+    oAuthRequests.getUser().then(res=> {
+      console.log(res.data);
+      setUser(res.data);
+    }).catch(err=> console.log(err))
+    
+}, [])
+
+
+
+
+
+
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const handleOpenUserMenu = (event) => {

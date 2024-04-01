@@ -9,10 +9,11 @@ const cookieParser = require('cookie-parser');
 
 app.use(cors({origin: `http://localhost:5173` , credentials: true}))
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({extended: true}));
 require('./config/mongoose.config');
 
-// console.log(process.env)
+console.log(process.env.MY_SECRET)
 
 // routes
 app.use('/user', userRoute);

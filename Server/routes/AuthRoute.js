@@ -1,10 +1,11 @@
-const {authenticate} = require('../config/jwt.config.js')
+
 const express = require('express')
 const AuthController = require('../controller/auth.controller.js')
 const User = require('../model/user.model.js')
 const user = new User();
 let path = require('path')
 const multer = require('multer');
+const { authenticate } = require('../config/jwt.config.js');
 
 // const storage = multer.diskStorage({
 //     destination : (req , res , cb)=>{

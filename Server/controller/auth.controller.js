@@ -120,7 +120,7 @@ module.exports = {
         // console.log("logged in user is ", userId)
         User.find({})
             .then(users => {
-                console.log(res.json(users))
+                res.json(users);
             })
             .catch(err => {
                 console.log(err)

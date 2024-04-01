@@ -1,22 +1,24 @@
 import React from 'react'
 import { conversation } from '../../sampleData/conversation'
 import { Avatar } from '@mui/material'
-const Conversation = () => {
+const Conversation = (props) => {
+    const { users } = props;
   return (
     <div className='conversation'>
 
         {
-            conversation.map((conversation)=>{
+            users.map((user)=>{
                 return(
                     <div className='conversationContainer'>
                         <div className='profilePic'>
-                            <Avatar src="" alt="dss" />
+                            <Avatar alt={user.userName} src="
+                            "   />
                             <div className='userInfoConversation'>
-                                <p>{conversation.userName}</p>
-                                <p>{conversation.message}</p>
+                                <p>{user.userName}</p>
+                                {/* <p>{user.message}</p> */}
                             </div>
                         </div>
-                        <span style={{alignSelf:"center"}}>{conversation.time}</span>
+                        <span style={{alignSelf:"center"}}>2:00pm</span>
 
                     </div>
                 )

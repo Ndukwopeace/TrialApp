@@ -27,9 +27,17 @@ import oAuthRequests from '../../Requests/Users/oAuthRequests';
 const settings = ['Profile', 'Logout'];
 const DashBoard = () => {
 
-  const [users , setUsers] = useState({});
+  const [users , setUsers] = useState([]);
   const [user , setUser] = useState({});
   
+  useEffect(()=>{
+    oAuthRequests.getUser().then(res=> {
+      console.log(res.data);
+      setUser(res.data);
+    }).catch(err=> console.log(err))
+    
+}, [])
+
   useEffect(()=>{
       oAuthRequests.getAllUsers().then(res=> {
         console.log(res.data);
@@ -38,13 +46,6 @@ const DashBoard = () => {
 
   }, [])
 
-  useEffect(()=>{
-    oAuthRequests.getUser().then(res=> {
-      console.log(res.data);
-      setUser(res.data);
-    }).catch(err=> console.log(err))
-    
-}, [])
 
 
 
@@ -92,7 +93,7 @@ const DashBoard = () => {
 
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user.userName} src="/static/images/avatar/2.jpg" />
               </IconButton>
               <Menu
               sx={{ mt: '45px' }}
@@ -123,7 +124,7 @@ const DashBoard = () => {
           </div>
           <div className="chatsDiv">
           <ChatHeader/>
-          <Conversation/>
+          <Conversation users ={users}/>
           </div>
           <div className="messageDiv">
             <CurrentChat/>

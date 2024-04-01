@@ -5,7 +5,7 @@ const {CreateToken} = require('../config/jwt.config.js');
 module.exports = {
     
     deleteUser: (req, res) => {
-        User.deleteOne({ _id: req.params.id })
+        User.deleteOne({ _id:req.params.id })
             .then(deleted => console.log(res.json(deleted)))
             .catch(err => console.log(err))
     },

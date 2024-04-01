@@ -41,7 +41,7 @@ const router = express.Router();
     router.post("/user/logout" , AuthController.logout);
     router.get("/user",authenticate,  AuthController.findUser);
     router.put("/follow/:id",authenticate, AuthController.followUser);
-    router.get("/users", authenticate,  AuthController.findAll);
+    router.get("/users", AuthController.findAll);
     router.put("/update/" ,authenticate,upload.single('profilePic'), AuthController.updateUser);
 
     console.log("thank you ");

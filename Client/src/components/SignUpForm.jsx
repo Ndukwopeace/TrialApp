@@ -1,14 +1,14 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { TextField, Button, Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Whatshot from '@mui/icons-material/Whatshot';
 import { LocalCafe } from '@mui/icons-material';
 import NavBar from './NavBar';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import UserRequests from '../../Requests/Users/UserRequests';
+import oAuthRequests from '../../Requests/Users/oAuthRequests';
 
-userObject = {
+const userObject = {
     firstName: "",
     lastName: "",
     email: "",
@@ -16,11 +16,22 @@ userObject = {
     confirmPassword: ""
 }
 const SignUpForm = (props) => {
-    const [user , setUser] = useState(userObject);
+    const [user, setUser] = useState(userObject);
+    const [errors, setErrors] = useState([]);
+    const navigate = useNavigate();
     const { setIsRegisterPage } = props;
-    const registerUser = (e) => {
+
+    const registerUser =  (e) => {
         e.preventDefault();
-        UserRequests.registerUser()
+        oAuthRequests.registerUser(user).then(res => {
+            console.log(response);
+            setIsRegisterPage(false);
+        }).catch((err) => {
+            console.log(err.response.data.errors)
+            setErrors(err.response.data.errors);
+            console.log(errors);
+        }
+        )
     }
     return (
         <div>
@@ -61,7 +72,14 @@ const SignUpForm = (props) => {
                         Enjoy!!!
                     </div>
                 </div>
-                <form style={{ width: "25rem", padding: "1rem", borderRadius: "0 1rem 1rem 0 ", boxShadow: "0 0 1px", display: "flex", justifyContent: "center", background: "white", color: "black", }}>
+                <form
+                    onSubmit={registerUser}
+                    style={{
+                        width: "25rem",
+                        padding: "1rem", borderRadius: "0 1rem 1rem 0 ",
+                        boxShadow: "0 0 1px", display: "flex", justifyContent: "center",
+                        background: "white", color: "black",
+                    }}>
 
                     <Grid container spacing={2} style={{ width: "90%", paddingTop: "1rem" }} >
 
@@ -69,24 +87,41 @@ const SignUpForm = (props) => {
                             <h3 >Sign up </h3>
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField label="First Name" fullWidth value={user.firstName}  
-                            onClick={(e)=> setUser({...userObject , firstName : e.target.value})}
+                            {errors?.firstName ? <small style={{ color: "red" }}> {errors?.firstName.message}</small> : null}
+                            <TextField type="text" label="First Name" fullWidth value={user.firstName}
+                                onChange={(e) => setUser({ ...user, firstName: e.target.value })}
                             />
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField label="Last Name" fullWidth  value={user.lastName}/>
+                            {errors?.lastName ? <small style={{ color: "red" }}> {errors?.lastName.message}</small> : null}
+                            <TextField type="text" label="Last Name" fullWidth value={user.lastName} onChange={(e) => setUser({ ...user, lastName: e.target.value })} />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField label="User Name" fullWidth  value={user.UserName}/>
+                            {errors?.userName ? <small style={{ color: "red" }}> {errors?.userName.message}</small> : null}
+
+                            <TextField type="text" label="User Name" fullWidth
+                                value={user.userName} onChange={(e) => setUser({ ...user, userName: e.target.value })} />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField type="email" label="Email" fullWidth  value={user.email}/>
+                            {errors?.email ? <small style={{ color: "red" }}> {errors?.email.message}</small> : null}
+
+                            <TextField type="email" label="Email" fullWidth
+                                value={user.email}
+                                onChange={(e) => setUser({ ...user, email: e.target.value })} />
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField type="password" label="Password" fullWidth  value={user.password} />
+                            {errors?.password ? <small style={{ color: "red" }}> {errors?.password.message}</small> : null}
+
+                            <TextField type="password" label="Password" fullWidth
+                                value={user.password}
+                                onChange={(e) => setUser({ ...user, password: e.target.value })} />
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField type="password" label="Confirm Password" fullWidth   value={user.confirmPassword}/>
+                            {errors?.confirmPassword ? <small style={{ color: "red" }}> {errors?.confirmPassword.message}</small> : null}
+
+                            <TextField type="password" label="Confirm Password" fullWidth
+                                value={user.confirmPassword}
+                                onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} />
                         </Grid>
                         <Grid item xs={8}>
                             <Link onClick={() => setIsRegisterPage(false)}><span>Already registered ? LogIn</span></Link>
@@ -98,7 +133,7 @@ const SignUpForm = (props) => {
                         </Grid>
                     </Grid>
                 </form>
-                
+
             </div>
         </div>
     )

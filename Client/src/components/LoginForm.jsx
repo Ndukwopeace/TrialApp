@@ -1,18 +1,35 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { TextField, Button, Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Whatshot from '@mui/icons-material/Whatshot';
 import { LocalCafe } from '@mui/icons-material';
 import NavBar from './NavBar';
 import {Link , useNavigate} from 'react-router-dom';
+import oAuthRequests from '../../Requests/Users/oAuthRequests';
 
+const loginObject = {
+  email: "",
+  password: ""
+}
 const LoginForm = (props) => {
+  const [loginUser , setLoginUser] = useState(loginObject);
+  const [errors , setErrors] = useState("");
   const {setIsRegisterPage} = props;
   const navigate = useNavigate();
   const handleSubmit = (e)=>{
     e.preventDefault();
-    console.log("hey there")
-    navigate('/dashboard');
+    oAuthRequests.loginUser(loginUser)
+    .then(res=>{
+      console.log(res)
+      navigate('/dashboard');
+    })
+    .catch(err=> {
+      console.log(err)
+      setErrors(err.response.data.errors);
+    }
+      
+      );
+
   }
   return (
     <div style={{
@@ -31,12 +48,20 @@ const LoginForm = (props) => {
           <Grid item xs={12}>
             <h3 >Sign In </h3>
           </Grid>
-
+                        {errors? <small style={{ color: "red" , alignSelf:"center"}}> {errors?.message}</small> : null}
           <Grid item xs={12}>
-            <TextField type="email" label="Email" fullWidth />
+          {errors?.email ? <small style={{ color: "red" }}> {errors?.email.message}</small> : null}
+
+            <TextField type="email" label="Email" fullWidth 
+            value={loginUser.email}
+            onChange={(e) => setLoginUser({ ...loginUser, email: e.target.value })}/>
           </Grid>
           <Grid item xs={12}>
-            <TextField type="password" label="Password" fullWidth />
+          {errors?.password ? <small style={{ color: "red" }}> {errors?.password.message}</small> : null}
+
+            <TextField type="password" label="Password" fullWidth 
+             value={loginUser.password}
+             onChange={(e) => setLoginUser({ ...loginUser, password: e.target.value })} />
           </Grid>
 
           <Grid item xs={8}>

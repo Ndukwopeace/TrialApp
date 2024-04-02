@@ -6,12 +6,13 @@ const { CreateToken } = require("../utils/jwt.utils.js");
 
 module.exports = {
     register: async (req, res) => {
-        try {
+        
             const tempUser = await User.findOne({email: req.body.email});
             if(tempUser) {
-                res.Status(400).json({'errors': {
-                    'email': { 'message': 'Email should  is taken' }}})
+                return res.status(400).json({'errors': {
+                    'email': { 'message': 'Email exists already' }}})
             }
+            try {
             const user = await User.create(req.body);
             const userToken = CreateToken(user._id);
             

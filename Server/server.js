@@ -2,6 +2,7 @@ const express = require('express');
 const userRoute = require('./routes/UserRoute');
 const authRoute = require('./routes/AuthRoute');
 const chatRoute = require('./routes/chatRoute');
+const MessageRoute = require('./routes/MessageRoute')
 const app = express();
 const cors = require('cors')
 const port = 8000;
@@ -9,6 +10,7 @@ const {createServer} = require('http')
 const {Server} = require('socket.io')
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
+// const messageController = require('./controller/message.controller');
 const httpServer = createServer(app);
 
 const io = new Server(httpServer , {
@@ -33,6 +35,7 @@ console.log(process.env.MY_SECRET)
 app.use('/user', userRoute);
 app.use('/oAuth', authRoute);
 app.use('/chat', chatRoute);
+app.use('/message', MessageRoute)
 
 
 

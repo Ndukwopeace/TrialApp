@@ -20,15 +20,20 @@ const SignUpForm = (props) => {
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
     const { setIsRegisterPage } = props;
-
+    const [emailError , setEmailError] = useState("");
     const registerUser =  (e) => {
         e.preventDefault();
-        oAuthRequests.registerUser(user).then(res => {
+        oAuthRequests.registerUser(user)
+        .then(res => {
+            console.log(res)
             console.log(response);
             setIsRegisterPage(false);
         }).catch((err) => {
+            console.log(err)
             console.log(err.response.data.errors)
-            setErrors(err.response.data.errors);
+            err.response.data.emailOnly? 
+                setEmailError(err.response.data.errors.emailOnly) : 
+                setErrors(err.response.data.errors);
             console.log(errors);
         }
         )
@@ -104,7 +109,7 @@ const SignUpForm = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                             {errors?.email ? <small style={{ color: "red" }}> {errors?.email.message}</small> : null}
-
+                            {emailError? <small style={{ color: "red" }}> {emailError?.message}</small> : null }
                             <TextField type="email" label="Email" fullWidth
                                 value={user.email}
                                 onChange={(e) => setUser({ ...user, email: e.target.value })} />

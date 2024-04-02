@@ -23,10 +23,13 @@ const SignUpForm = (props) => {
 
     const registerUser =  (e) => {
         e.preventDefault();
-        oAuthRequests.registerUser(user).then(res => {
-            console.log(response);
+        oAuthRequests.registerUser(user)
+        .then(res => {
+            console.log(res);
+            setUser(userObject);
             setIsRegisterPage(false);
         }).catch((err) => {
+            console.log(err)
             console.log(err.response.data.errors)
             setErrors(err.response.data.errors);
             console.log(errors);

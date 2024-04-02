@@ -1,4 +1,4 @@
-const { request } = require('http');
+// const { request } = require('http');
 const messageModel = require('../model/message.model');
 
 module.exports = {
@@ -14,14 +14,22 @@ module.exports = {
                 }
         },
 
-        getAllMessages : async(req , res) => {
-        
+        getAllMessages : async(req , res) => {        
                 try{
-                    const messages = await messageModel.findAll({})
+                    const messages = await messageModel.find();
                     res.status(200).json(messages);    
                 }catch(err){
                         res.status(500).json(err);
                 }
+        },
+        deleteMessage : async(req , res) => {
+                try{
+                        await messageModel.findOneAndDelete({_id: req.params.id});
+                        res.status(200).json("deleteSucessful")
+                }catch(err){
+                        res.status(500).json(err);
+                }
         }
+
 
 }

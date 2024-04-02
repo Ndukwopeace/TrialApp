@@ -26,7 +26,6 @@ const SignUpForm = (props) => {
         oAuthRequests.registerUser(user)
         .then(res => {
             console.log(res)
-            console.log(response);
             setIsRegisterPage(false);
         }).catch((err) => {
             console.log(err)

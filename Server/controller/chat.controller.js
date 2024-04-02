@@ -2,7 +2,8 @@ const chatModel = require('../model/chat.model');
 
 module.exports = {
     createChat : async(req , res) => {
-        const newChat = new chatModel({members:[req.params.senderId , req.params.recieverId]});
+        const newChat = new chatModel({members:[{senderId: req.params.senderId , recieverId:req.params
+            .recieverId}]});
             try{
             const result = await newChat.save();
             res.status(200).json(result);

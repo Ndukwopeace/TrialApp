@@ -34,8 +34,8 @@ console.log(process.env.MY_SECRET)
 // routes
 app.use('/user', userRoute);
 app.use('/oAuth', authRoute);
-app.use('/chat', chatRoute);
-app.use('/message', MessageRoute)
+app.use('/chats', chatRoute);
+app.use('/messages', MessageRoute)
 
 
 

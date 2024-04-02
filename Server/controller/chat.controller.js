@@ -4,10 +4,10 @@ module.exports = {
     createChat: async (req, res) => {
 
         const testChat = await chatModel.findOne({
-            members: [{
-                senderId: req.params.senderId, recieverId: req.params
+            members: [
+                 req.params.senderId,  req.params
                     .recieverId
-            }]
+            ]
         })
         console.log(testChat)
         if (testChat) {
@@ -15,10 +15,10 @@ module.exports = {
         }
 
         const newChat = new chatModel({
-            members: [{
-                senderId: req.params.senderId, recieverId: req.params
-                    .recieverId
-            }]
+            members: [
+                req.params.senderId,  req.params
+                   .recieverId
+           ]
         });
         try {
             const result = await newChat.save();
@@ -59,7 +59,7 @@ module.exports = {
     
     getAllUserChat : async(req , res) => {
         try{
-            const chat = await chatModel.findOne({members: {$in: req.params.userId}})
+            const chat = await chatModel.find({members: {$in: req.params.userId}})
             res.status(200).json(chat);
         }catch(err){
             res.status(500).json(err);

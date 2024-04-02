@@ -2,12 +2,15 @@ import React from 'react'
 import { conversation } from '../../sampleData/conversation'
 import { Avatar } from '@mui/material'
 const Conversation = (props) => {
-    const { users } = props;
+    const { users , loggedinUser} = props;
+
+    const contactsArray = users.filter(user => user._id !== loggedinUser._id);
+    // console.log(contactsArray)
   return (
     <div className='conversation'>
 
         {
-            users.map((user , index)=>{
+            contactsArray.map((user , index)=>{
                 return(
                     <div className='conversationContainer' key={index}>
                         <div className='profilePic'>

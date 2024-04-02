@@ -1,10 +1,20 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import {Box , TextField , OutlinedInput, Button} from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import SendIcon from '@mui/icons-material/Send';
 import { MessageData } from '../../sampleData/messageData';
+import { io } from 'socket.io-client';
 const Messages = () => {
-  
+  // const [socket] = useState(()=>io(":8000"))
+  // useEffect(()=>{
+  //   console.log('is socket running??')
+  //   socket.on('Welcome' , data => {
+  //     console.log(data);
+  //     console.log('yes socket is running well')
+  //   })
+
+  //   return ()=>socket.off("welcome");
+  // })
   return (
     <div className='messages'>
         <div className='message'>
@@ -26,10 +36,12 @@ const Messages = () => {
         <div>
         <form className='chatForm'>
    
-          <Box sx={{display:"flex" ,borderRadius:"1rem" , height:"3rem" , background:"rgb(252, 252, 252)"}}>
+          
+            <form action="" style={{display:"flex" , alignItems:"center" , border:"1px solid black", borderRadius:"1rem" , height:"3rem" , background:"rgb(252, 252, 252)"}}>
             <OutlinedInput placeholder='Send a message.....' fullWidth className="input" />
-            <Button  endIcon = {<SendIcon fontSize='larger'/>} className='button' ></Button>
-          </Box>
+            <Button type="submit"endIcon = {<SendIcon fontSize='larger'/>} className='button' ></Button>
+            </form>
+          
 
         </form>
         </div>

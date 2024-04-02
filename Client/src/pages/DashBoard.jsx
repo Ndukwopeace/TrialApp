@@ -22,14 +22,25 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import oAuthRequests from '../../Requests/Users/oAuthRequests';
+import { io } from 'socket.io-client';
 
 
 const settings = ['Profile', 'Logout'];
 const DashBoard = () => {
-
+  const [socket] = useState(()=>io(":8000"));
   const [users , setUsers] = useState([]);
   const [user , setUser] = useState({});
   
+
+  useEffect(()=>{
+    console.log('is socket running??')
+    socket.on('Welcome' , data => {
+      console.log(data);
+      console.log('yes socket is running well')
+    })
+
+    return ()=>socket.off("welcome");
+  })
   useEffect(()=>{
     oAuthRequests.getUser().then(res=> {
       console.log(res.data);
@@ -123,12 +134,12 @@ const DashBoard = () => {
             </div>
           </div>
           <div className="chatsDiv">
-          <ChatHeader/>
-          <Conversation users ={users}/>
+          <ChatHeader />
+          <Conversation users ={users} loggedinUser = {user} socket = {socket}/>
           </div>
           <div className="messageDiv">
-            <CurrentChat/>
-            <Messages/>
+            <CurrentChat socket = {socket}/>
+            <Messages socket = {socket}/>
           </div>
         </div>
 

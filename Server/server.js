@@ -1,6 +1,7 @@
 const express = require('express');
 const userRoute = require('./routes/UserRoute');
 const authRoute = require('./routes/AuthRoute');
+const chatRoute = require('./routes/chatRoute');
 const app = express();
 const cors = require('cors')
 const port = 8000;
@@ -12,8 +13,10 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer , {
     cors:{
-        origin: 'https://localhost:5173',
-        credentials: true
+        // origin: 'https://localhost:8000',
+        methods: ['GET', 'POST'],
+        credentials: true,
+        allowedHeaders: ['*']
     }
 })
 
@@ -29,10 +32,71 @@ console.log(process.env.MY_SECRET)
 // routes
 app.use('/user', userRoute);
 app.use('/oAuth', authRoute);
+app.use('/chat', chatRoute);
 
 
 
 // socket.io 
+
+io.on('connection', (socket)=>{
+    console.log(socket.id)
+    socket.emit('Welcome', socket.id);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -113,12 +113,13 @@ body{
 }
 
 .message{
-    padding: 1rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-height: 27rem;
+    height: 43rem;
     overflow: auto;
+    /* border: 1px solid black; */
 }
 
 .chatBubble{

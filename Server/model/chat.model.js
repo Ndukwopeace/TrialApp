@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const chatSchema = new mongoose.Schema({
-    recieverId : {type : String},
-    senderId : {type : String},
+    members: {type : Array}
 } , {timestamps: true})
 
 module.exports = mongoose.model('Chat', chatSchema);

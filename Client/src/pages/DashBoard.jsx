@@ -23,6 +23,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import oAuthRequests from '../../Requests/Users/oAuthRequests';
 import { io } from 'socket.io-client';
+import chatRequests from '../../Requests/chats/chatRequests';
 
 
 const settings = ['Profile', 'Logout'];
@@ -30,6 +31,8 @@ const DashBoard = () => {
   const [socket] = useState(()=>io(":8000"));
   const [users , setUsers] = useState([]);
   const [user , setUser] = useState({});
+  const [userChats , setUserChats] = useState([]);
+  
   
 
   useEffect(()=>{
@@ -46,8 +49,15 @@ const DashBoard = () => {
       console.log(res.data);
       setUser(res.data);
     }).catch(err=> console.log(err))
+
+    console.log(user._id)
+    chatRequests.getUserChat(user._id).then(res=> {
+      console.log(res.data);
+      setUserChats(res.data);
+    }).catch(err=> console.log(err))
+    const stop = "stop"
     
-}, [])
+}, [data])
 
   useEffect(()=>{
       oAuthRequests.getAllUsers().then(res=> {
@@ -56,6 +66,8 @@ const DashBoard = () => {
       }).catch(err=> console.log(err))
 
   }, [])
+
+
 
 
 
@@ -88,7 +100,7 @@ const DashBoard = () => {
         }}>
         My Dashboard  
         </h1>
-         
+       
         <div className='mainDashBoardDiv'>
           <div className="settingsDiv">
             <div className="dashBoardIcons">
@@ -135,7 +147,8 @@ const DashBoard = () => {
           </div>
           <div className="chatsDiv">
           <ChatHeader />
-          <Conversation users ={users} loggedinUser = {user} socket = {socket}/>
+          <Conversation users ={users} loggedinUser = {user} 
+          socket = {socket} userChats={userChats}/>
           </div>
           <div className="messageDiv">
             <CurrentChat socket = {socket}/>

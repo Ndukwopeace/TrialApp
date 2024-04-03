@@ -32,7 +32,7 @@ require('./config/mongoose.config');
 console.log(process.env.MY_SECRET)
 
 // routes
-app.use('/user', userRoute);
+app.use('/users', userRoute);
 app.use('/oAuth', authRoute);
 app.use('/chats', chatRoute);
 app.use('/messages', MessageRoute)

@@ -11,7 +11,7 @@ module.exports = {
         })
         console.log(testChat)
         if (testChat) {
-            return res.status(404).json({ message: "you are already chatting" });
+            return  ;
         }
 
         const newChat = new chatModel({

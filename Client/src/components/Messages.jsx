@@ -4,7 +4,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import SendIcon from '@mui/icons-material/Send';
 import { MessageData } from '../../sampleData/messageData';
 import { io } from 'socket.io-client';
-const Messages = () => {
+const Messages = (props) => {
+    const {currentChat} = props
   // const [socket] = useState(()=>io(":8000"))
   // useEffect(()=>{
   //   console.log('is socket running??')
@@ -15,6 +16,9 @@ const Messages = () => {
 
   //   return ()=>socket.off("welcome");
   // })
+  useEffect(()=>{
+    
+  }, [])
   return (
     <div className='messages'>
         <div className='message'>

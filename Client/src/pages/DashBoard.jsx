@@ -35,7 +35,6 @@ const DashBoard = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [currentChatObject, setCurrentChatObject] = useState(null)
 
-
   useEffect(() => {
     console.log('is socket running??')
     socket.on('Welcome', data => {
@@ -78,6 +77,8 @@ const DashBoard = () => {
       }
  
 }, [currentChat])
+
+
 
 console.log(currentChatObject)
 
@@ -164,7 +165,7 @@ return (
       </div>
       <div className="messageDiv">
         <CurrentChat socket={socket} currentChatObject={currentChatObject} loggedinUser={user} />
-        <Messages socket={socket} />
+        <Messages socket={socket} currentChat = {currentChat}/>
       </div>
     </div>
 

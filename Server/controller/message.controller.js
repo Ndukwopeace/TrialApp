@@ -31,5 +31,13 @@ module.exports = {
                 }
         },
 
-
+        getMessagesByChatId : async(req , res) => {
+                try{
+                        const chats = await messageModel.find({chatId: req.params.chatId});
+                        res.status(200).json(chats); 
+                }
+                catch(err){
+                        res.status(500).json(err);
+                }
+        }
 }

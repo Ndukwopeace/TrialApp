@@ -165,7 +165,7 @@ return (
       </div>
       <div className="messageDiv">
         <CurrentChat socket={socket} currentChatObject={currentChatObject} loggedinUser={user} />
-        <Messages socket={socket} currentChat = {currentChat}/>
+        <Messages socket={socket} currentChat = {currentChat} loggedinUser={user}/>
       </div>
     </div>
 

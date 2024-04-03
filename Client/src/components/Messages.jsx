@@ -6,7 +6,7 @@ import { MessageData } from '../../sampleData/messageData';
 import { io } from 'socket.io-client';
 import messageRequests from '../../Requests/Messages/messageRequests';
 const Messages = (props) => {
-    const {currentChat} = props;
+    const {currentChat , loggedinUser} = props;
     const [messages , setMessages] = useState([])
     useEffect(()=>{
         if(currentChat !== null){
@@ -39,13 +39,13 @@ console.log(messages)
     <div className='messages'>
         <div className='message'>
             {
-                MessageData.map(message =>{
+                messages.map(message =>{
                     
                     return (    
                         <div className='chatBubble' style={{
-                            borderRadius: message.id !== 'me' ? "0.75rem 0.5rem 0.75rem 0": "0.75rem 0.75rem 0  0.75rem",
-                            alignSelf: message.id !== 'me' ? "start": "end",
-                            backgroundColor: message.id !== 'me' ? "rgb(255,255,255)" : "rgb(233,255,219)"
+                            borderRadius: message.senderId !== loggedinUser._id ? "0.75rem 0.5rem 0.75rem 0": "0.75rem 0.75rem 0  0.75rem",
+                            alignSelf: message.senderId  !== loggedinUser._id ? "start": "end",
+                            backgroundColor: message.senderId !== loggedinUser._id ? "rgb(255,255,255)" : "rgb(233,255,219)"
                         }}>
                             <p>{message.message}</p>
                         </div>
@@ -57,7 +57,8 @@ console.log(messages)
         <form className='chatForm'>
    
           
-            <form action="" style={{display:"flex" , alignItems:"center" , border:"1px solid black", borderRadius:"1rem" , height:"3rem" , background:"rgb(252, 252, 252)"}}>
+            <form action="" style={{display:"flex" , alignItems:"center" 
+            , border:"1px solid black", borderRadius:"1rem" , height:"3rem" , background:"rgb(252, 252, 252)"}}>
             <OutlinedInput placeholder='Send a message.....' fullWidth className="input" />
             <Button type="submit"endIcon = {<SendIcon fontSize='larger'/>} className='button' ></Button>
             </form>

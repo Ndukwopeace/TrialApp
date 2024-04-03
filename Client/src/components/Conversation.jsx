@@ -1,49 +1,48 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { conversation } from '../../sampleData/conversation'
 import { Avatar } from '@mui/material'
 import axios from 'axios';
 import chatRequests from '../../Requests/chats/chatRequests';
+import userRequest from '../../Requests/Users/userRequests';
+import ConversationContainer from './ConversationContainer';
+import { Link } from 'react-router-dom';
 const Conversation = (props) => {
-    const { users , loggedinUser} = props;
-    const [currentChat , setCurrentChat ] = useState("")
+    const { users, loggedinUser ,userChats , setCurrentChat} = props;
+    // const [currentChat, setCurrentChat] = useState("")
     const contactsArray = users.filter(user => user._id !== loggedinUser._id);
-    // console.log(contactsArray)
+    const [chatMembers, setChatMembers] = useState([]);
+    // const [userChats, setUserChats] = useState([]);
+
+    const chatMembersId = [];
+   
+    console.log(userChats)
+    
 
     const handleSetCurrentChat = (recieverId) => {
-        chatRequests.createChat(recieverId , loggedinUser._id)
-        .then((res)=> console.log(res))
-        .catch((err) => console.log(err))
+        chatRequests.createChat(recieverId, loggedinUser._id)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
 
-        
+
     }
 
 
     return (
-    <div className='conversation'>
+        <div className='conversation'>
 
-        {
-            contactsArray.map((user , index)=>{
-                
-                return(
-                
-                    <div className='conversationContainer' key={index}>
-                        <div className='profilePic'>
-                            <Avatar alt={user.userName} src="
-                            "   />
-                            <div className='userInfoConversation'>
-                                <p onClick={()=> handleSetCurrentChat(`${user._id}`)}>{user.userName}</p>
-                                {/* <p>{user.message}</p> */}
-                            </div>
-                        </div>
-                        <span style={{alignSelf:"center"}}>2:00pm</span>
-
-                    </div>
-                )
-            })
-        }
-
-    </div>
-  )
+            {
+                userChats?.map((chat, index) => {
+                    return (
+                        <Link onClick={()=>setCurrentChat(chat._id)} style={{textDecoration: "none" , color:"inherit"}}>
+                          <ConversationContainer data={chat} key={index} loggedinUser={loggedinUser}/>  
+                          </Link>
+                    )
+                })
+            }
+        </div>
+    )
 }
 
 export default Conversation
+
+

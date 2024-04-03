@@ -4,8 +4,24 @@ import SearchIcon from '@mui/icons-material/Search';
 import SendIcon from '@mui/icons-material/Send';
 import { MessageData } from '../../sampleData/messageData';
 import { io } from 'socket.io-client';
+import messageRequests from '../../Requests/Messages/messageRequests';
 const Messages = (props) => {
-    const {currentChat} = props
+    const {currentChat} = props;
+    const [messages , setMessages] = useState([])
+    useEffect(()=>{
+        if(currentChat !== null){
+            messageRequests.getMessageByChatId(currentChat)
+            .then(res=> {
+                console.log(res.data)
+                setMessages(res.data)
+            })
+            .catch(err=> console.log(err))
+        }else{
+            return ;
+        }
+    },[currentChat])
+
+console.log(messages)
   // const [socket] = useState(()=>io(":8000"))
   // useEffect(()=>{
   //   console.log('is socket running??')

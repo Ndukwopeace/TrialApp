@@ -3,8 +3,8 @@ const Base_Url = "http://localhost:8000/messages"
 const API = axios.create({baseURL: Base_Url})
 
 
-const chatRequests = {
+const messageRequests = {
  getMessageByChatId : (chatId) => API.get(`/${chatId}` , {withCredentials:true})
 }
 
-export default chatRequests;
+export default messageRequests;

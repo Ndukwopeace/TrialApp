@@ -23,6 +23,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import oAuthRequests from '../../Requests/Users/oAuthRequests';
 import { io } from 'socket.io-client';
+import chatRequests from '../../Requests/chats/chatRequests';
 
 
 const settings = ['Profile', 'Logout'];
@@ -30,6 +31,8 @@ const DashBoard = () => {
   const [socket] = useState(()=>io(":8000"));
   const [users , setUsers] = useState([]);
   const [user , setUser] = useState({});
+  const [userChats , setUserChats] = useState([]);
+
   
 
   useEffect(()=>{
@@ -56,6 +59,15 @@ const DashBoard = () => {
       }).catch(err=> console.log(err))
 
   }, [])
+
+  useEffect(()=>{
+    chatRequests.getAllUserChat(user._id)
+    .then(res => {
+      console.log(res.data)
+      setUserChats(res.data)
+    })
+    .catch(err=> console.log(err))
+  },[user])
 
 
 

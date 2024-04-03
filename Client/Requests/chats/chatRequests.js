@@ -6,7 +6,8 @@ const API = axios.create({baseURL: Base_Url})
 const chatRequests = {
     createChat : (recieverId , senderId)=>API.post(`/create/${recieverId}/${senderId}`, {withCredentials: true}),
     getAllChat : () => API.get('/', {withCredentials: true}),
-    getChat : (chatId)=>API.post(`/create/${chatId}`, {withCredentials: true}),
+    // getChat : (chatId)=>API.post(`/create/${chatId}`, {withCredentials: true}),
+    getAllUserChat: (userId)=>API.post(`/${userId}`, {withCredentials: true}),
 }
 
 export default chatRequests;

@@ -32,7 +32,7 @@ const DashBoard = () => {
   const [users , setUsers] = useState([]);
   const [user , setUser] = useState({});
   const [userChats , setUserChats] = useState([]);
-  
+  const [currentChat, setCurrentChat] = useState(null);
   
 
   useEffect(()=>{
@@ -146,10 +146,10 @@ const DashBoard = () => {
           <div className="chatsDiv">
           <ChatHeader />
           <Conversation users ={users} loggedinUser = {user} 
-          socket = {socket} userChats={userChats}/>
+          socket = {socket} userChats={userChats} setCurrentChat={setCurrentChat}/>
           </div>
           <div className="messageDiv">
-            <CurrentChat socket = {socket}/>
+            <CurrentChat socket = {socket} currentChat={currentChat} setCurrentChat={setCurrentChat}/>
             <Messages socket = {socket}/>
           </div>
         </div>

@@ -29,29 +29,8 @@ const ConversationContainer = (props) => {
                 </div>
             </div>
             <span style={{ alignSelf: "center" }}>2:00pm</span>
-
         </div>
-
     )
 }
 
 export default ConversationContainer
-
-
-const Chats = (props) => {
-    const { data } = props
-    console.log(data)
-    return (
-        <>
-            {/* <div className='profilePic'>
-                <Avatar alt={user.userName} src="
-                            "   />
-                <div className='userInfoConversation'>
-                    <p onClick={() => handleSetCurrentChat(`${user._id}`)}>{user.userName}</p>
-                    <p>{user.message}</p>
-                </div>
-            </div>
-            <span style={{ alignSelf: "center" }}>2:00pm</span> */}
-        </>
-    )
-}

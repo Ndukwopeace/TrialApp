@@ -15,36 +15,8 @@ const Conversation = (props) => {
 
     const chatMembersId = [];
    
-    // useEffect(async () => {
-    //     try {
-    //         const res = await chatRequests.getUserChat(user._id);
-    //         if (res) {
-    //             console.log(res.data)
-    //             setUserChats(res.data)
-    //         } else { return; }
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }, [])
-
     console.log(userChats)
     
-    
-//     useEffect(() => {
-
-
-//             chatMembersId.map(memberId => {
-//                 userRequest.getUser(memberId)
-//                 .then(res => {
-//                     console.log(res.data);
-//                     setChatMembers([...chatMembers,res.data])
-//                 })
-//                 .catch(err => console.log(err));
-//             })
-//     },[])
-
-
-// console.log(chatMembersId);
 
     const handleSetCurrentChat = (recieverId) => {
         chatRequests.createChat(recieverId, loggedinUser._id)

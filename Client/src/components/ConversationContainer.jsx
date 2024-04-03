@@ -24,7 +24,9 @@ const ConversationContainer = (props) => {
             <div className='profilePic'>
                 <Avatar alt={member.userName} src="" />
                 <div className='userInfoConversation'>
-                    <p onClick={() => handleSetCurrentChat(`${member._id}`)}>{member.userName}</p>
+                    <p 
+                    // onClick={() => handleSetCurrentChat(`${member._id}`)}
+                    >{member.userName}</p>
                     {/* <p>{member.message}</p> */}
                 </div>
             </div>

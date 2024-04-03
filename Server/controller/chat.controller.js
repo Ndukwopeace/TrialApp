@@ -29,7 +29,7 @@ module.exports = {
     },
 
     getOneChat: async (req, res) => {
-        const id = req.params.id
+        const id = req.params.chatId
         try {
             const chat = await chatModel.findById({ _id: id })
             res.status(200).json(chat);

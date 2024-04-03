@@ -12,15 +12,29 @@ import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Avatar } from '@mui/material'
+import chatRequests from '../../Requests/chats/chatRequests';
+import userRequest from '../../Requests/Users/userRequests';
 
 const CurrentChat = (props) => {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { currentChat } = props
-  console.log(currentChat);
-  useEffect(() => {
+  const { currentChatObject , loggedinUser} = props
+  const [chatMember , setChatMember] = useState({})
 
-  })
+  useEffect(() => {
+    if (currentChatObject !== null){
+      const memberId = currentChatObject?.members.filter(memberId => memberId !== loggedinUser._id)
+      userRequest.getUser(memberId).then(res => {
+          console.log(res.data)
+          setChatMember(res.data)
+        }).catch(err => {console.log(err)})
+    } else{
+      return ;
+    }
+
+  },[currentChatObject])
+
+
   const handleChange = (event) => {
     setAuth(event.target.checked);
   };
@@ -35,9 +49,10 @@ const CurrentChat = (props) => {
 
   return (
     <Box>
-      <AppBar position="static" sx={{ background: "rgb(252, 252, 252)" }}>
+      <AppBar position="static" sx={{ background: "grey" }}>
         <Toolbar>
-          <IconButton
+          <Box sx={{border: "1px solid black", display: "flex" , alignItems:"center" ,gap:"1rem"}}>
+          <IconButton sx={{border: "1px solid black"}}
             size="large"
             aria-label="account of current user"
             aria-controls="menu-appbar"
@@ -47,12 +62,19 @@ const CurrentChat = (props) => {
           >
             <Avatar />
           </IconButton>
+
+          <div>
+            <p>{chatMember.userName}</p>
+          </div>
+          </Box>
+        
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}
             anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              // vertical: 'top',
+              // horizontal: 'right',
+              top: '10px'
             }}
             keepMounted
             transformOrigin={{

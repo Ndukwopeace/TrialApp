@@ -27,9 +27,12 @@ const Conversation = (props) => {
 
     console.log(userChats)
     userChats.map(chats => {
+        console.log(loggedinUser)
         console.log(chats);
-        const memberId = chats.members.find(memberId => memberId._id !== loggedinUser._id);
+        const memberId = chats.members.find(memberId => memberId !=loggedinUser._id);
+        console.log(memberId);
         return chatMembersId.push(memberId);
+
     })
     console.log(chatMembersId);
     useEffect(() => {

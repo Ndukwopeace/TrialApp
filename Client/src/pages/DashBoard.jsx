@@ -55,16 +55,14 @@ const DashBoard = () => {
       console.log(res.data);
       setUserChats(res.data);
     }).catch(err=> console.log(err))
-    const stop = "stop"
     
-}, [data])
+}, [user._id])
 
   useEffect(()=>{
       oAuthRequests.getAllUsers().then(res=> {
         console.log(res.data);
         setUsers(res.data);
       }).catch(err=> console.log(err))
-
   }, [])
 
 

@@ -4,9 +4,9 @@ const route = express.Router();
 
 
 route.get('/' , messageController.getAllMessages)
-route.post('/send/:id', messageController.addMessage );
+route.post('/send/', messageController.addMessage );
 route.delete('/delete/:id', messageController.deleteMessage)
-route.get(`/:chatId` , messageController.getAllMessages)
+route.get(`/:chatId` , messageController.getMessagesByChatId)
 
 
 module.exports = route

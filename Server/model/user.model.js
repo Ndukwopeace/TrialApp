@@ -42,10 +42,7 @@ const UserSchema = new mongoose.Schema({
     worksAt : String,
     inRelationship: String,
     country: String,
-    followers : [{type : mongoose.Types.ObjectId,
-    ref : "User"}],
-    following : [{type : mongoose.Types.ObjectId,
-    ref : "User"}]
+    loggedIn : { type : Boolean , default: false}
 
 }, {timestamps : true})
 

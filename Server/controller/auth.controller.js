@@ -102,7 +102,7 @@ module.exports = {
 
     updateUser : async(req , res)=>{
         // console.log(req);
-
+        // console.log(req.body);
         const body = req.body
         if (req.file){
             body = {...req.body , profilePic: req.file.filename}

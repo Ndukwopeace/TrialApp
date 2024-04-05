@@ -31,9 +31,10 @@ body{
 }
 
 .dashBoardIcons{
-    height: 10rem;
+    height: 15rem;
     justify-content: space-evenly;
     /* font-size: 30rem; */
+    /* border: 1px solid black; */
 }
 
 .profileSettingsDiv{
@@ -117,13 +118,13 @@ body{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    height: 43rem;
+    height: 30rem;
     overflow: auto;
     /* border: 1px solid black; */
 }
 
 .chatBubble{
-    max-height: 2rem; 
+    height: 3rem; 
     align-self: baseline;
-    padding: 0.7rem;
+    padding: 0.5rem;
 }

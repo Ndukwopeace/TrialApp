@@ -7,25 +7,15 @@ import userRequest from '../../Requests/Users/userRequests';
 import ConversationContainer from './ConversationContainer';
 import { Link } from 'react-router-dom';
 const Conversation = (props) => {
-    const { users, loggedinUser ,userChats , setCurrentChat} = props;
+    const { users, loggedinUser, userChats, setCurrentChat,currentChat } = props;
     // const [currentChat, setCurrentChat] = useState("")
-    const contactsArray = users.filter(user => user._id !== loggedinUser._id);
     const [chatMembers, setChatMembers] = useState([]);
     // const [userChats, setUserChats] = useState([]);
 
     const chatMembersId = [];
-   
+
     console.log(userChats)
-    
-
-    const handleSetCurrentChat = (recieverId) => {
-        chatRequests.createChat(recieverId, loggedinUser._id)
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err))
-
-
-    }
-
+    console.log("current chat is" + currentChat);
 
     return (
         <div className='conversation'>
@@ -33,9 +23,9 @@ const Conversation = (props) => {
             {
                 userChats?.map((chat, index) => {
                     return (
-                        <Link onClick={()=>setCurrentChat(chat._id)} style={{textDecoration: "none" , color:"inherit"}}>
-                          <ConversationContainer data={chat} key={index} loggedinUser={loggedinUser}/>  
-                          </Link>
+                        <Link onClick={() => setCurrentChat(chat._id)} style={{ textDecoration: "none", color: "inherit" }}>
+                            <ConversationContainer data={chat} key={index} loggedinUser={loggedinUser} />
+                        </Link>
                     )
                 })
             }

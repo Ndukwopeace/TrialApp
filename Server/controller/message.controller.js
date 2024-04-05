@@ -3,11 +3,11 @@ const messageModel = require('../model/message.model');
 
 module.exports = {
         addMessage : async(req , res) => {
-                const chatId = req.params.id
-                const {message , senderId  } = req.body;
-
+               
+                const {message , senderId , chatId} = req.body;
+                console.log(req.body);
                 try{
-                        const message = await messageModel.create({...req.body , chatId:chatId});
+                        const message = await messageModel.create(req.body);
                         res.status(200).json(message)
                 }catch(err){
                         res.status(500).json(err);

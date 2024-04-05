@@ -39,11 +39,11 @@ const upload = multer({storage , fileFilter})
 const router = express.Router();
     router.post("/login" , AuthController.login);
     router.post("/register" , AuthController.register);
-    router.post("/user/logout" , AuthController.logout);
-    router.get("/user",authenticate,  AuthController.findUser);
-    router.put("/follow/:id",authenticate, AuthController.followUser);
+    router.post("/logout" , AuthController.logout);
+    router.get("/user",authenticate,AuthController.findUser);
+    // router.put("/follow/:id",authenticate, AuthController.followUser);
     router.get("/users", AuthController.findAll);
-    router.put("/update/" ,authenticate,upload.single('profilePic'), AuthController.updateUser);
+    router.put("/update/" ,authenticate, AuthController.updateUser);
 
     console.log("thank you ");
 

@@ -51,8 +51,8 @@ const CurrentChat = (props) => {
     <Box>
       <AppBar position="static" sx={{ background: "grey" }}>
         <Toolbar>
-          <Box sx={{border: "1px solid black", display: "flex" , alignItems:"center" ,gap:"1rem"}}>
-          <IconButton sx={{border: "1px solid black"}}
+          <Box sx={{ display: "flex" , alignItems:"center" ,gap:"1rem"}}>
+          <IconButton 
             size="large"
             aria-label="account of current user"
             aria-controls="menu-appbar"
@@ -87,9 +87,18 @@ const CurrentChat = (props) => {
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
           </Menu>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Online
+         { currentChatObject?
+         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            {
+              chatMember.loggedIn? "Online" : "Offline"
+            }
           </Typography>
+          
+            :
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Start chat 
+          </Typography>
+        }
           {auth && (
             <div>
               <IconButton
